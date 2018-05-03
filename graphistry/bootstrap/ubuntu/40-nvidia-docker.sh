@@ -17,3 +17,7 @@ sudo apt-get install -y nvidia-docker2
 sudo pkill -SIGHUP dockerd
 
 docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+
+sudo cp ../daemon.json /etc/docker/daemon.json
+
+sudo service docker restart

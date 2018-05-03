@@ -45,6 +45,7 @@ setup(
     package_data={'graphistry': ['container_lists/private.txt',
                                  'container_lists/public.txt',
                                  'bootstrap/launch.sh',
+                                 'bootstrap/daemon.json',
                                  'bootstrap/make-bcrypt-contianer.sh',
                                  'templates/httpd-config.json',
                                  'templates/pivot-config.json',

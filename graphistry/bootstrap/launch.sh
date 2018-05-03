@@ -117,6 +117,13 @@ NPROC=${NPROC:-$(((which nproc > /dev/null) && nproc) || echo 1)}
 CENTRAL_MERGED_CONFIG=$(docker   run --rm -v ${PWD}/../httpd-config.json:/tmp/box-config.json -v ${PWD}/httpd-config.json:/tmp/local-config.json ${VIZ_APP_BASE_CONTAINER} bash -c 'mergeThreeFiles.js $graphistry_install_path/central-cloud-options.json    /tmp/box-config.json /tmp/local-config.json')
 VIZWORKER_MERGED_CONFIG=$(docker run --rm -e NPROC=$NPROC -v ${PWD}/../httpd-config.json:/tmp/box-config.json -v ${PWD}/httpd-config.json:/tmp/local-config.json ${VIZ_APP_BASE_CONTAINER} bash -c '(envsubst < $graphistry_install_path/viz-worker-cloud-options.json.envsubst > /tmp/default-config.json) && mergeThreeFiles.js /tmp/default-config.json /tmp/box-config.json /tmp/local-config.json')
 
+echo BALLS
+
+echo $VIZWORKER_MERGED_CONFIG
+
+echo $VIZWORKER_MERGED_CONFIG > VIZWORKER_MERGED_CONFIG
+echo $CENTRAL_MERGED_CONFIG > CENTRAL_MERGED_CONFIG
+
 $RUNTIME run \
     --net $GRAPHISTRY_NETWORK \
     --restart=unless-stopped \
